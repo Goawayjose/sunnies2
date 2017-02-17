@@ -1,0 +1,65 @@
+/**
+  Theme Name: My New Theme
+  Version: 2
+  Author: your name here
+*/
+
+svg.category_img {
+ fill:none;
+ stroke-miterlimit:10;
+ stroke-width:3px;
+ max-width: 50px;
+ position: relative;
+ stroke:#C4C5C9 !important;
+}
+
+
+
+.productSvg {
+ min-height: 60px;
+ text-align: center;
+ padding-top: 20px;
+ float: left;
+ min-width: 80px;
+}
+
+.style-nav{
+ min-height: 100px;
+ width: 100%;
+ background: white;
+}
+
+.topheader {
+ position: relative;
+ text-align: center;
+}
+
+.logo {
+ text-align: center;
+ width: 100%;
+ background-color: #30303C;
+}
+
+.logo a {
+  color:#DA5D71;
+  font-size: 24pt;
+}
+
+svg.category_img:hover {
+ stroke: -webkit-linear-gradient( #FFAE5F, #DA5D71); /* For Safari 5.1 to 6.0 */
+ stroke: -o-linear-gradient( #FFAE5F, #DA5D71); /* For Opera 11.1 to 12.0 */
+ stroke: -moz-linear-gradient( #FFAE5F, #DA5D71); /* For Firefox 3.6 to 15 */
+ stroke: linear-gradient( #FFAE5F, #DA5D71); /* Standard syntax */
+ max-width: 50px;
+}
+
+.NavActive {
+  background: -webkit-linear-gradient( #FFAE5F, #DA5D71); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient( #FFAE5F, #DA5D71); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient( #FFAE5F, #DA5D71); /* For Firefox 3.6 to 15 */
+  background: linear-gradient( #FFAE5F, #DA5D71); /* Standard syntax */
+}
+
+.NavActive > svg.category_img {
+  stroke: white !important;
+}
