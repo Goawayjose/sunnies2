@@ -10,17 +10,47 @@ svg.category_img {
  stroke-width:3px;
  max-width: 50px;
  position: relative;
- stroke:#C4C5C9 !important;
+ stroke:#30303C !important;
 }
 
+.show {
+  display: block;
+}
+.hide {
+  display: none;
+}
 
+nav {
+  position:fixed;
+  width: 100%;
+}
+
+nav .mainNav > .container {
+  text-align: center;
+}
+
+nav .mainNav > .container > a {
+  display: inline-block;
+}
+
+.mainNav {
+  background-color: white;
+}
+
+.nav-up {
+  margin-top: -45px;
+  transition: top 0.5s ease-in-out; }
+
+.nav-down {
+  top: 0; }
 
 .productSvg {
- min-height: 60px;
+ height: 100%;
+ min-height: 70px;
  text-align: center;
  padding-top: 20px;
  float: left;
- min-width: 80px;
+ min-width: 130px;
 }
 
 .style-nav{
@@ -38,19 +68,13 @@ svg.category_img {
  text-align: center;
  width: 100%;
  background-color: #30303C;
+ z-index: 99;
+ transition: all 0.2s ease-in;
 }
 
 .logo a {
   color:#DA5D71;
   font-size: 24pt;
-}
-
-svg.category_img:hover {
- stroke: -webkit-linear-gradient( #FFAE5F, #DA5D71); /* For Safari 5.1 to 6.0 */
- stroke: -o-linear-gradient( #FFAE5F, #DA5D71); /* For Opera 11.1 to 12.0 */
- stroke: -moz-linear-gradient( #FFAE5F, #DA5D71); /* For Firefox 3.6 to 15 */
- stroke: linear-gradient( #FFAE5F, #DA5D71); /* Standard syntax */
- max-width: 50px;
 }
 
 .NavActive {
@@ -60,6 +84,167 @@ svg.category_img:hover {
   background: linear-gradient( #FFAE5F, #DA5D71); /* Standard syntax */
 }
 
-.NavActive > svg.category_img {
+.NavActive  svg.category_img {
   stroke: white !important;
+}
+
+svg.daGradient {
+  transition: all 0.2s ease-in;
+}
+
+.main.container {
+  padding-top: 140px;
+}
+
+.on {
+  border: black 2px solid;
+}
+
+.show {
+  display: block;
+}
+
+.buttonClose {
+  height: 30px;
+  width: 30px;
+  position: fixed;
+  top: 100px;
+  right: 20px;
+  background: lightgrey;
+}
+
+.lensSelection {
+  position: fixed;
+  display: none;
+  z-index: 1;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+}
+
+.lensSelection-Background {
+  position: absolute;
+  transition: all 4s ease-in;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+  z-index: 1;
+  background: -webkit-linear-gradient( #FFAE5F, #DA5D71); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient( #FFAE5F, #DA5D71); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient( #FFAE5F, #DA5D71); /* For Firefox 3.6 to 15 */
+  background: linear-gradient( #FFAE5F, #DA5D71); /* Standard syntax */
+}
+
+.lensSelection-Container {
+  left: 50%;
+  margin-left: -480px;
+  top:50%;
+  margin-top: -296.5px;
+  position: absolute;
+  height: 593px;
+  width: 960px;
+  background-color: white;
+  z-index: 3;
+  border-radius: 10pt;
+}
+
+#LensFirst {
+  position: absolute;
+  z-index: 4;
+  background-color: white;
+  width: 100%;
+  left: 0;
+  padding: 50px;
+}
+
+#LensSecond {
+  position: absolute;
+  z-index: 5;
+  background-color: white;
+  width: 100%;
+  left: 0;
+  padding: 50px;
+}
+
+#LensThird {
+  position: absolute;
+  z-index: 6;
+  background-color: white;
+  width: 100%;
+  left: 0;
+  padding: 50px;
+}
+
+.inner-container {
+  width: 100%;
+  padding: 50px;
+  position: relative;
+  display: block;
+}
+
+.input-container {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  margin: 0.5rem;
+  float: left;
+  position: relative;
+}
+
+.input-container .radio-button {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  cursor: pointer;
+}
+
+.input-container .radio-tile {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  height: 100%;
+  border: 2px solid #079ad9;
+  border-radius: 5px;
+  padding: 1rem;
+  -webkit-transition: -webkit-transform 300ms ease;
+  transition: -webkit-transform 300ms ease;
+  transition: transform 300ms ease;
+  transition: transform 300ms ease, -webkit-transform 300ms ease;
+}
+
+.input-container .icon svg {
+ fill: #079ad9;
+ width: 3rem;
+ height: 3rem;
+}
+
+.input-container .radio-button:checked + .radio-tile {
+  background-color: #079ad9;
+  border: 2px solid #079ad9;
+  color: white;
+  -webkit-transform: scale(1.1, 1.1);
+          transform: scale(1.1, 1.1);
+}
+
+.input-container .radio-button:checked +  .radio-tile .icon svg {
+  fill: white;
+    background-color: #079ad9;
 }
