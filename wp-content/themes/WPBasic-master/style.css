@@ -144,11 +144,78 @@ svg.daGradient {
   top:50%;
   margin-top: -296.5px;
   position: absolute;
-  height: 593px;
-  width: 960px;
+  min-height: 593px;
+  min-width: 960px;
+  height: auto;
+  width: auto;
   background-color: white;
   z-index: 3;
   border-radius: 10pt;
+}
+
+.btn-Continue:hover {
+  cursor: pointer;
+}
+
+ul.status {
+  padding: 0;
+  height: auto;
+  width: 100%;
+  list-style: none;
+  position: relative;
+  display: inline-block;
+}
+
+li.daBar {
+  margin-top: -5px;
+  top: 50%;
+  width: 49%;
+  margin-left: 1%;
+  position: absolute;
+  height: 10px;
+  background-color: grey;
+}
+li.daBar:nth-of-type(2) {
+  left: 50%;
+  width: 49%;
+  margin-right: 1%;
+  position: absolute;
+  height: 10px;
+}
+
+li.status-ball {
+  left: 0;
+  position: relative;
+  border-radius: 50px;
+  text-align: center;
+  padding-top: 5px;
+  font-size: 20px;
+  float: left;
+  height: 38px;
+  width: 38px;
+  color: white;
+  background-color: grey;
+
+}
+
+li.status-ball.access {
+  cursor: pointer;
+  background: -webkit-linear-gradient( #FFAE5F, #DA5D71); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient( #FFAE5F, #DA5D71); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient( #FFAE5F, #DA5D71); /* For Firefox 3.6 to 15 */
+  background: linear-gradient( #FFAE5F, #DA5D71); /* Standard syntax */
+
+}
+
+li.status-ball:nth-of-type(4) {
+  left: 50%;
+  margin-left: -50px;
+}
+
+li.status-ball:nth-of-type(5) {
+position: absolute;
+left: 100%;
+margin-left: -30px;
 }
 
 #LensFirst {
@@ -160,22 +227,24 @@ svg.daGradient {
   padding: 50px;
 }
 
-#LensSecond {
+.LensSecond {
   position: absolute;
   z-index: 5;
   background-color: white;
   width: 100%;
   left: 0;
   padding: 50px;
+  display: none;
 }
 
-#LensThird {
+.LensThird {
   position: absolute;
   z-index: 6;
   background-color: white;
   width: 100%;
   left: 0;
   padding: 50px;
+  display: none;
 }
 
 .inner-container {
@@ -221,7 +290,7 @@ svg.daGradient {
           justify-content: center;
   width: 100%;
   height: 100%;
-  border: 2px solid #079ad9;
+  border: 2px solid #30303C;
   border-radius: 5px;
   padding: 1rem;
   -webkit-transition: -webkit-transform 300ms ease;
@@ -231,14 +300,14 @@ svg.daGradient {
 }
 
 .input-container .icon svg {
- fill: #079ad9;
+ fill: #30303C;
  width: 3rem;
  height: 3rem;
 }
 
 .input-container .radio-button:checked + .radio-tile {
-  background-color: #079ad9;
-  border: 2px solid #079ad9;
+  background-color: #30303C;
+  border: 2px solid #30303C;
   color: white;
   -webkit-transform: scale(1.1, 1.1);
           transform: scale(1.1, 1.1);
@@ -246,5 +315,15 @@ svg.daGradient {
 
 .input-container .radio-button:checked +  .radio-tile .icon svg {
   fill: white;
-    background-color: #079ad9;
+  background-color: #30303C;
+}
+
+.btn-Continue {
+  background: #30303C;
+  color: white;
+  width: 90%;
+  border-radius: 4px;
+  text-align: center;
+  height: 40px;
+  padding-top: 10px;
 }

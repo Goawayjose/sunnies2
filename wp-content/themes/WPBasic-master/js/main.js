@@ -1,6 +1,12 @@
 $(document).ready(function(){
 
 
+  $('.grid').isotope({
+    itemSelector: '.grid-item',
+    layoutMode: 'fitRows'
+  });
+
+
   jQuery(function($) {
       $('.productSvg').hover(function() {
         if(!$(this).hasClass('NavActive'))  {
@@ -39,5 +45,46 @@ $('.btn-select').click(function(){
 $('.lensSelection-Background').click(function(){
   $(".lensSelection.show").removeClass('show');
 });
+
+
+$('.btn-toSecond').click(function(){
+  $('.LensSecond').addClass('show');
+  $('li.status-ball:nth-of-type(4)').addClass('access');
+  $('li.daBar:nth-of-type(1)').css('background-color', '#30303C');
+});
+  if ($('li.status-ball:nth-of-type(4)').hasClass('access')) {
+
+  }
+
+$('.btn-toThird').click(function(){
+  $('.LensThird').addClass('show');
+  $('li.status-ball:nth-of-type(5)').addClass('access');
+  $('li.daBar:nth-of-type(2)').css('background-color', '#30303C');
+});
+
+$('.btn-submitLens').click(function(){
+  $(".lensSelection.show").removeClass('show');
+});
+
+$('li.status-ball:nth-of-type(3)').click(function(){
+  $('.LensSecond').removeClass('show');
+  $('.LensThird').removeClass('show');
+});
+
+$('li.status-ball:nth-of-type(4)').click(function(){
+  if ($(this).hasclass('access')){
+    $('.LensSecond').addClass('show');
+    $('.LensThird').removeClass('show');
+  }
+});
+
+
+
+
+
+
+
+
+
 
 });

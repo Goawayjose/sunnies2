@@ -15,6 +15,13 @@
 
 		<div class="logo nav-down">
 			<a href="	<?php echo home_url(); ?>">SUNNIES</a>
+			<a href="<?php bloginfo('url');?>/cart">
+				<div class="productSvg" id="cart">
+					<div class="btn-Cart">
+						cart
+					</div>
+				</div>
+			</a>
 		</div>
 		<div class="mainNav">
 			<div class="container">
@@ -164,45 +171,54 @@
 						</div>
 					</div>
 				</a>
-				<a href="<?php bloginfo('url');?>/cart">
-					<div class="productSvg" id="cart">
-						<div class="btn-Cart">
-
-						</div>
-					</div>
-				</a>
 			</div>
 		</div>
 	</nav>
+
+
   <div class="main container">
 
-<form id="filter" action="" method="post">
-	<input type="button" class="btn btn-danger green" name="2" value="green">
-	<input type="button" class="btn btn-danger red" name="3" value="red">
-	<input type="button" class="btn btn-danger blue" name="4" value="blue">
-</form>
+  <div class="nav nav-pills filter-button-group">
+					 <div class="row">
+					 	<div class="colorsRows">
+							<button data-filter=".white">
+	 		       	white
+			 		     </button>
+							 <button data-filter=".grey">
+				       grey
+					     </button>
+							 <button data-filter=".red">
+								 red
+							 </button>
+							 <button data-filter=".yellow">
+								 yellow
+							 </button>
+							 <button data-filter=".blue">
+								 blue
+							 </button>
+							 <button data-filter=".pink">
+							 pink
+							 </button>
+							 <br>
+							 <button data-filter=".black">
+							 black
+							</button>
+							<button data-filter=".brown">
+							brown
+							</button>
+							<button data-filter=".orange">
+							orange
+							</button>
+							<button data-filter=".green">
+							green
+							</button>
+							<button data-filter=".purple">
+							purple
+							</button>
+							<button data-filter=".transparent">
+							transparent
+							</button>
+					 	</div>
+					 </div>
 
-<script type="text/javascript">
-
-
-	$values =[];
-
-$('.btn-danger').click(function(){
-
-	var clickBtnValue = $(this).attr('name');
-
-	$(this).toggleClass('on');
-	found = $values.indexOf(clickBtnValue);
-	
-	if ($(this).hasClass('on')) {
-		$values.push(clickBtnValue);
-	}
-	else {
-		$values.splice(found);
-	}
-
-	console.log($values);
-
-});
-
-</script>
+		     </div> 
