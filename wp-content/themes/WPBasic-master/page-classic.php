@@ -1,5 +1,61 @@
 <?php get_header(); /* Template Name: classic Page */?>
 
+
+   <div id="filters" class="daFilters">
+
+<div class="filter filter-button-group"  data-filter-group="color">
+     <button data-filter="">
+     nothing
+      </button>
+      <button data-filter=".grey">
+      grey
+      </button>
+      <button data-filter=".red">
+        red
+      </button>
+      <button data-filter=".yellow">
+        yellow
+      </button>
+      <button data-filter=".blue">
+        blue
+      </button>
+      <button data-filter=".pink">
+      pink
+      </button>
+      <br>
+      <button data-filter=".black">
+      black
+     </button>
+     <button data-filter=".brown">
+     brown
+     </button>
+     <button data-filter=".orange">
+     orange
+     </button>
+
+     <button data-filter=".green">
+     green
+     </button>
+
+
+     <button data-filter=".purple">
+     purple
+     </button>
+
+
+     <button data-filter=".transparent">
+     transparent
+     </button>
+   </div>
+
+
+</div>
+
+
+
+
+
+
 <div class="row">
 
 
@@ -15,7 +71,10 @@ $classics = New WP_query ([
 
 
  ?>
-<?php
+
+
+
+<!-- <?php
 
    $categories = get_categories( array(
        'orderby' => 'name',
@@ -33,7 +92,7 @@ $classics = New WP_query ([
 
 
   <?php } ?>
-
+-->
 
 
 
@@ -54,29 +113,62 @@ $classics = New WP_query ([
 
 
 
-
+<div class="col-sm-3">
     <div class="grid-item <?php post_categories();  ?>">
 
-      <div class="storeTemplate">
-
-        <a href="<?php the_permalink(); ?>">
-          <div class="well">
+        <div class="storeTemplate well">
 
 
 
-          <div class="">
-            <?php post_categories();  ?>
 
 
-            <h3><?php the_title(); ?></h3>
-            <h5><?php the_category(); ?></h5>
-          </div>
-          </div>
-        </a>
-        <div class="btn-select">
-          <p>select</p>
+
+
+              <a href="<?php the_permalink(); ?>">
+              <div class="mainImg">
+                <img src="<?php the_field('imgSecond'); ?>" class="img-responsive secondImg" alt="">
+                <img src="<?php the_field('imgMain'); ?>" class="img-responsive" alt="">
+              </div>
+              <h3><?php the_title(); ?></h3>
+              <p class="priceSmall">starting at <?php the_field('firstPrice'); ?></p>
+              </a>
+              <div class="btn-select">
+                <p>select lens</p>
+              </div>
+
+              **** for testing ****
+              <h5><?php the_category(); ?></h5>
+
+
+
+
+
         </div>
-      </div>
+
+
+
+
+      <?php
+      if(!empty($_POST['lensStyle'])
+        && !empty($_POST['lensStyle'])
+        && isset($_POST['submit1'])
+      ){
+
+        $my_post = array(
+          'post_title' => wp_strip_all_tags($_POST['daTitle']),
+          'post_status' => 'publish',
+          'post_author' => get_current_user_id(),
+          'post_type' => 'cart1'
+        );
+
+        $post_id = wp_insert_post( $my_post );
+
+        update_field('style', wp_strip_all_tags($_POST['lensStyle']), $post_id);
+        update_field('type', wp_strip_all_tags($_POST['daType']), $post_id);
+        update_field('optional', wp_strip_all_tags($_POST['materialoptional']), $post_id);
+
+      }
+      ?>
 
 
 
@@ -99,14 +191,14 @@ $classics = New WP_query ([
             <form class="" action="" method="post">
               <div id="LensFirst">
 
-
+                <input id="clear" class="radio-button" type="radio" checked="checked" name="daTitle" value="<?php the_title(); ?>" />
               <div class="row">
                 <h1>select lens type</h1>
               </div>
               <div class="row">
                 <div class="col-md-4">
                   <div class="input-container">
-                    <input id="clear" class="radio-button" type="radio" name="lens1" />
+                    <input id="clear" class="radio-button" type="radio" name="lensStyle" value="clear" />
                     <div class="radio-tile">
                       <div class="icon walk-icon">
                         <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
@@ -120,7 +212,7 @@ $classics = New WP_query ([
                 </div>
                 <div class="col-md-4">
                   <div class="input-container">
-                    <input id="transition" class="radio-button" type="radio" name="lens1" />
+                    <input id="transition" class="radio-button" type="radio" name="lensStyle" value="transparent" />
                     <div class="radio-tile">
                       <div class="icon walk-icon">
                         <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
@@ -134,7 +226,7 @@ $classics = New WP_query ([
                 </div>
                 <div class="col-md-4">
                   <div class="input-container">
-                    <input id="polarized" class="radio-button" type="radio" name="lens1" />
+                    <input id="polarized" class="radio-button" type="radio"  name="lensStyle" value="polarized" />
                     <div class="radio-tile">
                       <div class="icon walk-icon">
                         <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
@@ -183,7 +275,7 @@ $classics = New WP_query ([
               <div class="row">
                 <div class="col-md-4">
                   <div class="input-container">
-                    <input id="clear" class="radio-button" type="radio" name="materialStyle" />
+                    <input id="clear" class="radio-button" type="radio" name="daType" value="Plastic"/>
                     <div class="radio-tile">
                       <label for="clear">Plastic</label>
                     </div>
@@ -191,7 +283,7 @@ $classics = New WP_query ([
                 </div>
                 <div class="col-md-4">
                   <div class="input-container">
-                    <input id="transition" class="radio-button" type="radio" name="materialStyle" />
+                    <input id="transition" class="radio-button" type="radio" name="daType" value="Polycarbonate" />
                     <div class="radio-tile">
                       <label for="transition">Polycarbonate</label>
                     </div>
@@ -199,7 +291,7 @@ $classics = New WP_query ([
                 </div>
                 <div class="col-md-4">
                   <div class="input-container">
-                    <input id="polarized" class="radio-button" type="radio" name="materialStyle" />
+                    <input id="polarized" class="radio-button" type="radio" name="daType" value="HighIndex"/>
                     <div class="radio-tile">
                       <label for="polarized">High-Index</label>
                     </div>
@@ -217,7 +309,7 @@ $classics = New WP_query ([
                   </div>
                   <div class="col-md-6">
                     <div class="input-container">
-                      <input id="transition" class="radio-button" type="radio" name="MaterialType" />
+                      <input id="transition" class="radio-button" type="radio" name="materialoptional" value="AntiScratch" />
                       <div class="radio-tile">
                         <label for="transition">Anti-scratch</label>
                       </div>
@@ -227,7 +319,7 @@ $classics = New WP_query ([
 
                   <div class="col-md-6">
                     <div class="input-container">
-                      <input id="polarized" class="radio-button" type="radio" name="MaterialType" />
+                      <input id="polarized" class="radio-button" type="radio" name="materialoptional" value="AntiReflection" />
                       <div class="radio-tile">
                           <label for="polarized">Anti-Reflection</label>
                         </div>
@@ -557,15 +649,14 @@ $classics = New WP_query ([
                 </div>
                 <div class="col-sm-6"></div>
                 <div class="col-sm-3">
-                  <div class="btn-Continue btn-submitLens">
-                    <p>submit</p>
-                  </div>
+                  <input class="btn-Continue btn-submitLens" type="submit" name="submit1" value="submit">
                 </div>
               </div>
 
             </div>
 
             </form>
+            </div>
             </div>
           </div>
       </div>
@@ -592,32 +683,6 @@ $classics = New WP_query ([
 </div>
 <?php get_footer(); ?>
 
-
-
-<?php
-if(!empty($_POST['title'])
-  && !empty($_POST['description'])
-  && isset($_POST['submit1'])
-){
-  $my_post = array(
-    'post_title' => wp_strip_all_tags( $_POST['title']),
-    'post_content' => wp_strip_all_tags($_POST['description']),
-    'post_status' => 'publish',
-    'post_author' => get_current_user_id(),
-    'post_type' => 'cart1'
-  );
-
-  $post_id = wp_insert_post( $my_post );
-
-  update_field('description', wp_strip_all_tags($_POST['description']), $post_id);
-}
-?>
-
-<form class="" action="" method="post">
-  <input type="text" name="title" value="">
-  <input type="text" name="description" value="">
-  <input type="submit" name="submit1" value="submit">
-</form>
 
 
 

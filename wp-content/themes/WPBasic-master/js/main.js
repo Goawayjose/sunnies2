@@ -1,10 +1,81 @@
 $(document).ready(function(){
 
+  var $container = $('.grid');
+  var comboFilter = getComboFilter( filters );
+  $container.isotope({ filter: comboFilter });
 
-  $('.grid').isotope({
-    itemSelector: '.grid-item',
-    layoutMode: 'fitRows'
+
+
+  $('.daFilters button').on( 'click', function() {
+
+  var $this = $(this);
+  // get group key
+  var $buttonGroup = $this.parents('.filter-button-group');
+  var Group = $buttonGroup.attr('data-filter-group');
+
+  // combine filters
+  var filterGroup = filters[ Group ];
+          if ( !filterGroup ) {
+              filterGroup = filters[ Group ] = [];
+          }
+          var comboFilter = getComboFilter( filters );
+          console.log(comboFilter);
+          $container.isotope({
+            filter: comboFilter,
+            itemSelector: '.grid-item',
+            layoutMode: 'fitRows'
   });
+});
+
+
+function getComboFilter( filters ) {
+    var i = 0;
+    var comboFilters = [];
+    var message = [];
+    for ( var prop in filters ) {
+        message.push( filters[ prop ].join(' ') );
+        var filterGroup = filters[ prop ];
+        // skip to next filter group if it doesn't have any values
+        if ( !filterGroup.length ) {
+            continue;
+        }
+        if ( i === 0 ) {
+            // copy to new array
+            comboFilters = filterGroup.slice(0);
+        }
+        else {
+            var filterSelectors = [];
+            // copy to fresh array
+            var groupCombo = comboFilters.slice(0); // [ A, B ]
+            // merge filter Groups
+            for (var k=0, len3 = filterGroup.length; k < len3; k++) {
+                for (var j=0, len2 = groupCombo.length; j < len2; j++) {
+                    filterSelectors.push( groupCombo[j] + filterGroup[k] ); // [ 1, 2 ]
+                }
+            }
+            // apply filter selectors to combo filters for next group
+            comboFilters = filterSelectors;
+        }
+        i++;
+    }
+    comboFilters.sort();
+    var comboFilter = comboFilters.join(', ');
+    return comboFilter;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   jQuery(function($) {
@@ -39,7 +110,9 @@ mywindow.scroll(function () {
 });
 
 $('.btn-select').click(function(){
-  $('.lensSelection').addClass('show')
+  var $this = $(this);
+
+  $this.parent().parent().children().addClass('show');
 });
 
 $('.lensSelection-Background').click(function(){

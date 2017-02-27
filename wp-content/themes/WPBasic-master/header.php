@@ -3,6 +3,7 @@
 <head>
 	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 	<title><?php if(is_home()) bloginfo('name'); else wp_title(''); ?></title>
+	<link href="https://fonts.googleapis.com/css?family=Roboto:100i,300,400" rel="stylesheet">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="<?php bloginfo('stylesheet_url'); ?>">
 	<?php wp_head();?>
@@ -14,14 +15,13 @@
 	<nav>
 
 		<div class="logo nav-down">
-			<a href="	<?php echo home_url(); ?>">SUNNIES</a>
-			<a href="<?php bloginfo('url');?>/cart">
-				<div class="productSvg" id="cart">
-					<div class="btn-Cart">
-						cart
-					</div>
-				</div>
-			</a>
+			<div class="container">
+				<a href="	<?php echo home_url(); ?>">SUNNIES</a>
+				<a href="<?php bloginfo('url');?>/cart">
+						<div class="btn-Cart">
+						</div>
+				</a>
+			</div>
 		</div>
 		<div class="mainNav">
 			<div class="container">
@@ -177,48 +177,3 @@
 
 
   <div class="main container">
-
-  <div class="nav nav-pills filter-button-group">
-					 <div class="row">
-					 	<div class="colorsRows">
-							<button data-filter=".white">
-	 		       	white
-			 		     </button>
-							 <button data-filter=".grey">
-				       grey
-					     </button>
-							 <button data-filter=".red">
-								 red
-							 </button>
-							 <button data-filter=".yellow">
-								 yellow
-							 </button>
-							 <button data-filter=".blue">
-								 blue
-							 </button>
-							 <button data-filter=".pink">
-							 pink
-							 </button>
-							 <br>
-							 <button data-filter=".black">
-							 black
-							</button>
-							<button data-filter=".brown">
-							brown
-							</button>
-							<button data-filter=".orange">
-							orange
-							</button>
-							<button data-filter=".green">
-							green
-							</button>
-							<button data-filter=".purple">
-							purple
-							</button>
-							<button data-filter=".transparent">
-							transparent
-							</button>
-					 	</div>
-					 </div>
-
-		     </div> 
