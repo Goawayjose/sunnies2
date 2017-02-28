@@ -4,6 +4,7 @@
 	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 	<title><?php if(is_home()) bloginfo('name'); else wp_title(''); ?></title>
 	<link href="https://fonts.googleapis.com/css?family=Roboto:100i,300,400" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="<?php bloginfo('stylesheet_url'); ?>">
 	<?php wp_head();?>
@@ -19,6 +20,7 @@
 				<a href="	<?php echo home_url(); ?>">SUNNIES</a>
 				<a href="<?php bloginfo('url');?>/cart">
 						<div class="btn-Cart">
+							<i class="fa fa-shopping-cart" aria-hidden="true"></i>
 						</div>
 				</a>
 			</div>

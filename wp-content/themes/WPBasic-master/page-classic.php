@@ -201,9 +201,8 @@ $classics = New WP_query ([
                     <input id="clear" class="radio-button" type="radio" name="lensStyle" value="clear" />
                     <div class="radio-tile">
                       <div class="icon walk-icon">
-                        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M0 0h24v24H0z" fill="none"/>
-                          <path d="M13.5 5.5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zM9.8 8.9L7 23h2.1l1.8-8 2.1 2v6h2v-7.5l-2.1-2 .6-3C14.8 12 16.8 13 19 13v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1L6 8.3V13h2V9.6l1.8-.7"/>
+                        <svg xmlns="http://www.w3.org/2000/svg">
+                          <path  d="M114.5.59c-20-1-32,7-40,7s-28-7-39-7-14,1-35,0v10s7,0,7,4-1,30,26,30,30-17,31-23,5-8,8-8,9-1,10,8c0,0,8,23,29,23s27-22,27-30c0,0-1-7,8-7v-7A266.63,266.63,0,0,1,114.5.59Zm-78,40c-23,0-26-15-26-25s15-12,20-12,31,3,31,12C61.5,15.59,59.5,40.59,36.5,40.59Zm71,0c-15,0-22-18-22-25,0-5,10-10,16-11s32-6,32,11S122.5,40.59,107.5,40.59Z"/>
                         </svg>
                       </div>
                       <label for="clear">clear</label>
