@@ -41,6 +41,7 @@ svg.category_img {
 }
 
 nav {
+  z-index: 3;
   position:fixed;
   width: 100%;
 }
@@ -54,6 +55,7 @@ nav .mainNav > .container > a {
 }
 
 .mainNav {
+      height: 70px;
   background-color: white;
 }
 
@@ -138,8 +140,16 @@ svg.daGradient {
   transition: all 0.2s ease-in;
 }
 
-.main.container {
+.main {
   padding-top: 140px;
+}
+
+.daFilters{
+  width: 100%;
+  background-color:  #30303C;
+  height: auto;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .grid .col-sm-3{
@@ -214,13 +224,29 @@ svg.daGradient {
   position: fixed;
   top: 100px;
   right: 20px;
-  background: lightgrey;
+  background: transparent;
+}
+.buttonClose:after {
+  position: absolute;
+  content: '';
+  background-color: #30303C;
+  height: 100%;
+  width: 2px;
+  transform: rotate(-45deg);
+}
+.buttonClose:before {
+  position: absolute;
+  content: '';
+  background-color: #30303C;
+  height: 100%;
+  width: 2px;
+  transform: rotate(45deg);
 }
 
 .lensSelection {
   position: fixed;
   display: none;
-  z-index: 1;
+  z-index: 10;
   top: 0px;
   left: 0px;
   width: 100%;

@@ -2,7 +2,7 @@ $(document).ready(function(){
 
   var $container = $('.grid');
   var comboFilter = getComboFilter( filters );
-  $container.isotope({ filter: comboFilter });
+  // $container.isotope({ filter: comboFilter });
 
 
 
@@ -12,27 +12,37 @@ $(document).ready(function(){
   // get group key
   var $buttonGroup = $this.parents('.filter-button-group');
   var Group = $buttonGroup.attr('data-filter-group');
+  console.log(Group);
+  // var filters = [];
 
   // combine filters
   var filterGroup = filters[ Group ];
-          if ( !filterGroup ) {
-              filterGroup = filters[ Group ] = [];
-          }
-          var comboFilter = getComboFilter( filters );
-          console.log(comboFilter);
-          $container.isotope({
-            filter: comboFilter,
-            itemSelector: '.grid-item',
-            layoutMode: 'fitRows'
+
+  if ( !filterGroup ) {
+      filterGroup = filters[ Group ] = [];
+  }
+
+  console.log(filters);
+  var comboFilter = getComboFilter("red" );
+  console.log(comboFilter);
+
+  $container.isotope({
+    filter: comboFilter,
+    itemSelector: '.grid-item',
+    layoutMode: 'fitRows'
   });
+
+
 });
 
 
-function getComboFilter( filters ) {
+function getComboFilter( filters  ) {
     var i = 0;
     var comboFilters = [];
     var message = [];
     for ( var prop in filters ) {
+      console.log( filters);
+
         message.push( filters[ prop ].join(' ') );
         var filterGroup = filters[ prop ];
         // skip to next filter group if it doesn't have any values

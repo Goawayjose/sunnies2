@@ -1,5 +1,5 @@
 
-</div><!-- x container -->
+</div><!-- x main -->
 <script src="<?php bloginfo('stylesheet_directory');?>/js/main.js"></script>
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="https://unpkg.com/isotope-layout@3.0.2/dist/isotope.pkgd.min.js"></script>

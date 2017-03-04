@@ -1,60 +1,34 @@
+<?php
+if(!empty($_POST['lensStyle'])
+  && !empty($_POST['lensStyle'])
+  && isset($_POST['submit1'])
+){
+
+  $my_post = array(
+    'post_title' => wp_strip_all_tags($_POST['daTitle']),
+    'post_status' => 'publish',
+    'post_author' => get_current_user_id(),
+    'post_type' => 'cart1'
+  );
+
+  $post_id = wp_insert_post( $my_post );
+
+  update_field('style', wp_strip_all_tags($_POST['lensStyle']), $post_id);
+  update_field('type', wp_strip_all_tags($_POST['daType']), $post_id);
+  update_field('field_58b38e0e4370d', wp_strip_all_tags($_POST['daPrice']), $post_id);
+  update_field('field_58b5cbe9cd7df', wp_strip_all_tags($_POST['daImg']), $post_id);
+  update_field('field_58b5cbf4cd7e0', wp_strip_all_tags($_POST['daImg2']), $post_id);
+  update_field('optional', wp_strip_all_tags($_POST['materialoptional']), $post_id);
+
+/*  $url = bloginfo('url').'/classic';
+
+  header('Location: ' . $url);
+  die(); */
+
+
+}
+?>
 <?php get_header(); /* Template Name: classic Page */?>
-
-
-   <div id="filters" class="daFilters">
-
-<div class="filter filter-button-group"  data-filter-group="color">
-     <button data-filter="">
-     nothing
-      </button>
-      <button data-filter=".grey">
-      grey
-      </button>
-      <button data-filter=".red">
-        red
-      </button>
-      <button data-filter=".yellow">
-        yellow
-      </button>
-      <button data-filter=".blue">
-        blue
-      </button>
-      <button data-filter=".pink">
-      pink
-      </button>
-      <br>
-      <button data-filter=".black">
-      black
-     </button>
-     <button data-filter=".brown">
-     brown
-     </button>
-     <button data-filter=".orange">
-     orange
-     </button>
-
-     <button data-filter=".green">
-     green
-     </button>
-
-
-     <button data-filter=".purple">
-     purple
-     </button>
-
-
-     <button data-filter=".transparent">
-     transparent
-     </button>
-   </div>
-
-
-</div>
-
-
-
-
-
 
 <div class="row">
 
@@ -72,17 +46,17 @@ $classics = New WP_query ([
 
  ?>
 
-
-
-<!-- <?php
+<!--
+ <?php
 
    $categories = get_categories( array(
        'orderby' => 'name',
        'parent'  => 0
    ) );
-
+?>
+<div id="filters" class="daFilters"> <?php
    foreach ( $categories as $category ) {?>
-     <div class="nav nav-pills filter-button-group">
+     <div class="filter filter-button-group"  data-filter-group="color">
        <div class="button-group" data-filter-group="color">
          <button data-filter=".<?php echo $category->name; ?>">
          <?php echo $category->name; ?>
@@ -92,7 +66,8 @@ $classics = New WP_query ([
 
 
   <?php } ?>
--->
+
+</div> -->
 
 
 
@@ -102,6 +77,7 @@ $classics = New WP_query ([
 
 
 
+<div class="container">
   <div class="grid">
 <?php if ($classics->have_posts()) : while ($classics->have_posts()) : $classics->the_post(); ?>
 
@@ -148,27 +124,7 @@ $classics = New WP_query ([
 
 
 
-      <?php
-      if(!empty($_POST['lensStyle'])
-        && !empty($_POST['lensStyle'])
-        && isset($_POST['submit1'])
-      ){
 
-        $my_post = array(
-          'post_title' => wp_strip_all_tags($_POST['daTitle']),
-          'post_status' => 'publish',
-          'post_author' => get_current_user_id(),
-          'post_type' => 'cart1'
-        );
-
-        $post_id = wp_insert_post( $my_post );
-
-        update_field('style', wp_strip_all_tags($_POST['lensStyle']), $post_id);
-        update_field('type', wp_strip_all_tags($_POST['daType']), $post_id);
-        update_field('optional', wp_strip_all_tags($_POST['materialoptional']), $post_id);
-
-      }
-      ?>
 
 
 
@@ -190,7 +146,9 @@ $classics = New WP_query ([
             </ul>
             <form class="" action="" method="post">
               <div id="LensFirst">
-
+                <input id="clear" class="radio-button" type="radio" checked="checked" name="daImg2" value="<?php the_field('imgSecond'); ?>" />
+                <input id="clear" class="radio-button" type="radio" checked="checked" name="daImg" value="<?php the_field('imgMain'); ?>" />
+                <input id="clear" class="radio-button" type="radio" checked="checked" name="daPrice" value="<?php the_field('firstPrice'); ?>" />
                 <input id="clear" class="radio-button" type="radio" checked="checked" name="daTitle" value="<?php the_title(); ?>" />
               <div class="row">
                 <h1>select lens type</h1>
@@ -681,6 +639,11 @@ $classics = New WP_query ([
 </div>
 </div>
 <?php get_footer(); ?>
+</div>
+
+
+
+
 
 
 

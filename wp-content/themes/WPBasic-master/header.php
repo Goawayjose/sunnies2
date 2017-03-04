@@ -175,7 +175,52 @@
 				</a>
 			</div>
 		</div>
+		<div id="filters" class="main daFilters">
+			<div class="container">
+				<div class="filter filter-button-group"  data-filter-group="color">
+					 <button data-filter=".grey" class="color" style="background:#FFFFFF;">
+					 white
+					 </button>
+					 <button data-filter=".grey" class="color" style="background:#BDBDBD;">
+					 grey
+					 </button>
+					 <button data-filter=".red" class="color" style="background:#F44336;">
+						 red
+					 </button>
+					 <button data-filter=".yellow" class="color" style="background:#FFEB3B;">
+						 yellow
+					 </button>
+					 <button data-filter=".blue" class="color" style="background:#2196F3;">
+						 blue
+					 </button>
+					 <button data-filter=".pink" class="color" style="background:#EC407A;">
+					 pink
+					 </button>
+					 <br>
+					 <button data-filter=".black" class="color" style="background:#000000;">
+					 black
+					</button>
+					<button data-filter=".brown" class="color" style="background:#795548;">
+					brown
+					</button>
+					<button data-filter=".orange" class="color" style="background:#FF9800;">
+					orange
+					</button>
+					<button data-filter=".green" class="color" style="background:#4CAF50;">
+					green
+					</button>
+					<button data-filter=".purple" class="color" style="background:#9C27B0;">
+					purple
+					</button>
+					<button data-filter=".transparent" class="color" style="background:transparent; border: 1px solid white;">
+					transparent
+					</button>
+				</div>
+			</div>
+		</div>
 	</nav>
 
 
-  <div class="main container">
+
+
+  <div class="main">
