@@ -18,7 +18,8 @@ if(!empty($_POST['lensStyle'])
   update_field('field_58b38e0e4370d', wp_strip_all_tags($_POST['daPrice']), $post_id);
   update_field('field_58b5cbe9cd7df', wp_strip_all_tags($_POST['daImg']), $post_id);
   update_field('field_58b5cbf4cd7e0', wp_strip_all_tags($_POST['daImg2']), $post_id);
-  update_field('optional', wp_strip_all_tags($_POST['materialoptional']), $post_id);
+
+
 
 /*  $url = bloginfo('url').'/classic';
 
@@ -78,23 +79,20 @@ $classics = New WP_query ([
 
 
 <div class="container">
-  <div class="grid">
+  <div id="grid">
+
+
+
+
+
+
 <?php if ($classics->have_posts()) : while ($classics->have_posts()) : $classics->the_post(); ?>
 
 
 
 
-
-
-
-
-
-<div class="col-sm-3">
-    <div class="grid-item <?php post_categories();  ?>">
-
+    <div class="item col-sm-3 <?php foreach((get_the_category()) as $category) { echo $category->cat_name . ' '; } ?>   ">
         <div class="storeTemplate well">
-
-
 
 
 
@@ -111,10 +109,6 @@ $classics = New WP_query ([
               <div class="btn-select">
                 <p>select lens</p>
               </div>
-
-              **** for testing ****
-              <h5><?php the_category(); ?></h5>
-
 
 
 
@@ -156,7 +150,7 @@ $classics = New WP_query ([
               <div class="row">
                 <div class="col-md-4">
                   <div class="input-container">
-                    <input id="clear" class="radio-button" type="radio" name="lensStyle" value="clear" />
+                    <input id="clear" class="radio-button lensStyle" type="radio" name="lensStyle" value="clear" />
                     <div class="radio-tile">
                       <div class="icon walk-icon">
                         <svg xmlns="http://www.w3.org/2000/svg">
@@ -169,7 +163,7 @@ $classics = New WP_query ([
                 </div>
                 <div class="col-md-4">
                   <div class="input-container">
-                    <input id="transition" class="radio-button" type="radio" name="lensStyle" value="transparent" />
+                    <input id="transition" class="radio-button lensStyle" type="radio" name="lensStyle" value="transparent" />
                     <div class="radio-tile">
                       <div class="icon walk-icon">
                         <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
@@ -183,7 +177,7 @@ $classics = New WP_query ([
                 </div>
                 <div class="col-md-4">
                   <div class="input-container">
-                    <input id="polarized" class="radio-button" type="radio"  name="lensStyle" value="polarized" />
+                    <input id="polarized" class="radio-button lensStyle" type="radio"  name="lensStyle" value="polarized" />
                     <div class="radio-tile">
                       <div class="icon walk-icon">
                         <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
@@ -210,7 +204,7 @@ $classics = New WP_query ([
                 <div class="row">
                   <div class="col-sm-3">
                     <div class="totalSoFar">
-                      <p>Total: $35</p>
+                      <p>Total: <?php the_field('firstPrice'); ?></p>
                     </div>
                   </div>
                   <div class="col-sm-6"></div>
@@ -232,7 +226,7 @@ $classics = New WP_query ([
               <div class="row">
                 <div class="col-md-4">
                   <div class="input-container">
-                    <input id="clear" class="radio-button" type="radio" name="daType" value="Plastic"/>
+                    <input id="clear" class="radio-button lensType" type="radio" name="daType" value="Plastic"/>
                     <div class="radio-tile">
                       <label for="clear">Plastic</label>
                     </div>
@@ -240,7 +234,7 @@ $classics = New WP_query ([
                 </div>
                 <div class="col-md-4">
                   <div class="input-container">
-                    <input id="transition" class="radio-button" type="radio" name="daType" value="Polycarbonate" />
+                    <input id="transition" class="radio-button lensType" type="radio" name="daType" value="Polycarbonate" />
                     <div class="radio-tile">
                       <label for="transition">Polycarbonate</label>
                     </div>
@@ -248,7 +242,7 @@ $classics = New WP_query ([
                 </div>
                 <div class="col-md-4">
                   <div class="input-container">
-                    <input id="polarized" class="radio-button" type="radio" name="daType" value="HighIndex"/>
+                    <input id="polarized" class="radio-button lensType" type="radio" name="daType" value="HighIndex"/>
                     <div class="radio-tile">
                       <label for="polarized">High-Index</label>
                     </div>
@@ -280,7 +274,9 @@ $classics = New WP_query ([
                       <div class="radio-tile">
                           <label for="polarized">Anti-Reflection</label>
                         </div>
+                        <input id="" class="" type="radio" name="materialoptional" value="" />
                     </div>
+
                   </div>
 
 
@@ -315,7 +311,7 @@ $classics = New WP_query ([
               <div class="row">
                 <div class="col-md-6">
                   <div class="input-container">
-                    <input id="transition" class="radio-button" type="radio" name="MaterialType" />
+                    <input id="transition" class="radio-button ifPerscribed yes" type="radio" name="MaterialType" />
                     <div class="radio-tile">
                       <label for="transition">Yes</label>
                     </div>
@@ -325,7 +321,7 @@ $classics = New WP_query ([
 
                 <div class="col-md-6">
                   <div class="input-container">
-                    <input id="polarized" class="radio-button" type="radio" name="MaterialType" />
+                    <input id="polarized" class="radio-button ifPerscribed no" type="radio" name="MaterialType" />
                     <div class="radio-tile">
                         <label for="polarized">No</label>
                     </div>
@@ -336,6 +332,7 @@ $classics = New WP_query ([
               <div id="percriptionInfo" class="row">
                 <div class="responsive">
         <table class="table table-bordered box-shadow--6dp">
+          <div class="tbl-cover cover"></div>
           <thead>
             <tr>
               <th></th>
@@ -346,10 +343,11 @@ $classics = New WP_query ([
             </tr>
           </thead>
           <tbody>
+
             <tr>
               <th scope="row">Right (OD)</th>
               <td>
-                <select name="RightRightOd">
+                <select name="RightRightOd" class="PSelect"  onchange="daChange()">
                     <?php
                       $x = -9.25;
 
@@ -383,7 +381,7 @@ $classics = New WP_query ([
 
 
               <td>
-                <select name="RightRightOd">
+                <select name="RightRightOd" class="PSelect">
                     <?php
                       $x = -9.25;
 
@@ -414,7 +412,7 @@ $classics = New WP_query ([
                 </select>
               </td>
               <td>
-                <select name="RightRightOd">
+                <select name="RightRightOd" class="PSelect">
                   <option selected="selected" value="none">none</option>
                   <?php
                     $x = 00;
@@ -429,7 +427,7 @@ $classics = New WP_query ([
                 </select>
               </td>
               <td>
-                <select name="RightRightOd">
+                <select name="RightRightOd" class="PSelect">
                   <option selected="selected" value="none">none</option>
                   <?php
                     $x = 0.5;
@@ -447,7 +445,7 @@ $classics = New WP_query ([
             <tr>
               <th scope="row">Left (OD)</th>
               <td>
-                <select name="RightRightOd">
+                <select name="RightRightOd" class="PSelect">
                     <?php
                       $x = -9.25;
 
@@ -481,7 +479,7 @@ $classics = New WP_query ([
 
 
               <td>
-                <select name="RightRightOd">
+                <select name="RightRightOd" class="PSelect">
                     <?php
                       $x = -9.25;
 
@@ -512,7 +510,7 @@ $classics = New WP_query ([
                 </select>
               </td>
               <td>
-                <select name="RightRightOd">
+                <select name="RightRightOd" class="PSelect">
                   <option selected="selected" value="none">none</option>
                   <?php
                     $x = 00;
@@ -527,7 +525,7 @@ $classics = New WP_query ([
                 </select>
               </td>
               <td>
-                <select name="RightRightOd">
+                <select name="RightRightOd" class="PSelect">
                   <option selected="selected" value="none">none</option>
                   <?php
                     $x = 0.5;
@@ -545,7 +543,7 @@ $classics = New WP_query ([
             <tr>
               <th scope="row">PD</th>
               <td>
-                <select name="RightRightOd">
+                <select name="RightRightOd" class="PSelect">
                   <option value="none">none</option>
                   <?php
                     $x = 49;
@@ -571,12 +569,12 @@ $classics = New WP_query ([
                 </select>
               </td>
               <td><input type="radio" name="2pd" value="2pd"> I have 2 PD numbers</td>
-              <td>@twitter</td>
+
             </tr>
             <tr>
               <th scope="row">Near PD</th>
               <td>
-                <select class="NeaPd" name="NearPd">
+                <select class="NeaPd PSelect" name="NearPd" >
                   <option selected="selected" value="none">none</option>
                   <?php
                     $x = 39;
@@ -591,9 +589,10 @@ $classics = New WP_query ([
                 </select>
               </td>
               <td><input type="radio" name="2pd" value="2pd"> Add Pirsm</td>
-              <td>@twitter</td>
+
             </tr>
           </tbody>
+
         </table>
       </div>
               </div>
@@ -606,7 +605,8 @@ $classics = New WP_query ([
                 </div>
                 <div class="col-sm-6"></div>
                 <div class="col-sm-3">
-                  <input class="btn-Continue btn-submitLens" type="submit" name="submit1" value="submit">
+                  <div class="cover btn-cover"></div>
+                  <input class="btn-Continue btn-submit" type="submit" name="submit1" value="submit">
                 </div>
               </div>
 
@@ -617,7 +617,7 @@ $classics = New WP_query ([
             </div>
           </div>
       </div>
-    </div>
+
 
 
 

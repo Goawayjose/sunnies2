@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script src="<?php bloginfo('stylesheet_directory');?>/js/main.js"></script>
 	<title><?php if(is_home()) bloginfo('name'); else wp_title(''); ?></title>
 	<link href="https://fonts.googleapis.com/css?family=Roboto:100i,300,400" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
@@ -173,49 +175,152 @@
 						</div>
 					</div>
 				</a>
+				<a class="filters" href="#">
+					<div >
+						filters
+					</div>
+				</a>
 			</div>
 		</div>
-		<div id="filters" class="main daFilters">
+
+
+
+		<div id="filters" class=" daFilters show">
 			<div class="container">
-				<div class="filter filter-button-group"  data-filter-group="color">
-					 <button data-filter=".grey" class="color" style="background:#FFFFFF;">
-					 white
-					 </button>
-					 <button data-filter=".grey" class="color" style="background:#BDBDBD;">
-					 grey
-					 </button>
-					 <button data-filter=".red" class="color" style="background:#F44336;">
-						 red
-					 </button>
-					 <button data-filter=".yellow" class="color" style="background:#FFEB3B;">
-						 yellow
-					 </button>
-					 <button data-filter=".blue" class="color" style="background:#2196F3;">
-						 blue
-					 </button>
-					 <button data-filter=".pink" class="color" style="background:#EC407A;">
-					 pink
-					 </button>
-					 <br>
-					 <button data-filter=".black" class="color" style="background:#000000;">
-					 black
-					</button>
-					<button data-filter=".brown" class="color" style="background:#795548;">
-					brown
-					</button>
-					<button data-filter=".orange" class="color" style="background:#FF9800;">
-					orange
-					</button>
-					<button data-filter=".green" class="color" style="background:#4CAF50;">
-					green
-					</button>
-					<button data-filter=".purple" class="color" style="background:#9C27B0;">
-					purple
-					</button>
-					<button data-filter=".transparent" class="color" style="background:transparent; border: 1px solid white;">
-					transparent
-					</button>
+				<div id="options">
+					<div class="col-sm-4">
+						<h5>Colors</h5>
+						<div class="option-set color-set" data-group="color">
+							<div class="inputHolder">
+								<input style="background:#FFFFFF;" type="checkbox" class="color" value=".white" id="white" /><label  for="white">white</label>
+							</div>
+							<div class="inputHolder">
+								<input style="background:#BDBDBD;" type="checkbox" class="color" value=".grey" id="grey" /><label  for="grey">grey</label>
+
+							</div>
+							<div class="inputHolder">
+								<input style="background:#F44336;" type="checkbox" class="color" value=".red" id="red" /><label  for="red">red</label>
+
+							</div>
+							<div class="inputHolder">
+								<input style="background:#FFEB3B;" type="checkbox" class="color" value=".yellow" id="yellow" /><label  for="yellow">yellow</label>
+
+							</div>
+							<div class="inputHolder">
+								<input style="background:#2196F3;" type="checkbox" class="color" value=".blue" id="blue" /><label  for="blue">blue</label>
+
+							</div>
+							<div class="inputHolder">
+								<input style="background:#EC407A;" type="checkbox" class="color" value=".pink" id="pink" /><label  for="pink">pink</label>
+
+							</div>
+							<br><br>
+							<div class="inputHolder">
+								<input style="background:#000000;" type="checkbox" class="color" value=".black" id="black" /><label  for="black">black</label>
+
+							</div>
+							<div class="inputHolder">
+								<input style="background:#795548;" type="checkbox" class="color" value=".brown" id="brown" /><label  for="brown">brown</label>
+
+							</div>
+							<div class="inputHolder">
+								<input style="background:#FF9800;" type="checkbox" class="color" value=".orange" id="orange" /><label  for="orange">orange</label>
+
+							</div>
+							<div class="inputHolder">
+								<input style="background:#4CAF50;" type="checkbox" class="color" value=".green" id="green" /><label  for="green">green</label>
+
+							</div>
+							<div class="inputHolder">
+								<input style="background:#9C27B0;" type="checkbox" class="color" value=".purple" id="purple" /><label  for="purple">purple</label>
+
+							</div>
+							<div class="inputHolder">
+								<input style="background:transparent; border: 1px solid white;" for="transparent" type="checkbox" class="color" value=".transparent" id="transparent" /><label >transparent</label>
+
+							</div>
+
+							<br><br><br>
+							<div class="inputHolderClear">
+								<input type="checkbox" class="all" value="" id="color-all" checked />
+							</div>
+
+						</div>
+					</div>
+
+					<div class="col-sm-3">
+						<h5>Materials</h5>
+						<div class="option-set" data-group="color">
+							<div class="inputHolder2 col-sm-6">
+								<input  type="checkbox" class="material" value=".steal" id="steal" /><label  for="steal">steal</label>
+							</div>
+							<div class="inputHolder2 col-sm-6">
+								<input  type="checkbox" class="material" value=".plastic" id="plastic" /><label  for="plastic">plastic</label>
+
+							</div><br>
+							<div class="inputHolder2 col-sm-6">
+								<input  type="checkbox" class="material" value=".wood" id="wood" /><label  for="wood">wood</label>
+
+							</div>
+							<div class="inputHolder2 col-sm-6">
+								<input  type="checkbox" class="material" value=".glass" id="glass" /><label  for="glass">glass</label>
+
+							</div><br>
+							<div class="inputHolder2 col-sm-6">
+								<input  type="checkbox" class="material" value=".trivex" id="trivex" /><label  for="trivex">trivex</label>
+
+							</div>
+							<div class="inputHolder2 col-sm-6">
+								<input  type="checkbox" class="material" value=".polycarbonate" id="polycarbonate" /><label  for="polycarbonate">polycarbonate</label><br>
+
+							</div>
+
+							<br><br>
+							<div class="inputHolderClear">
+								<input type="checkbox" class="all" value="" id="color-all" checked />
+							</div>
+
+						</div>
+					</div>
+
+					<div class="col-sm-2">
+						<h5>Gender</h5>
+						<div class="option-set" data-group="color">
+							<div class="inputHolder">
+								<input  type="checkbox" class="gender" value=".male" id="male" />
+							</div>
+							<div class="inputHolder">
+								<input  type="checkbox" class="gender female" value=".female" id="female" />
+
+							</div>
+
+							<br><br>
+							<div class="inputHolderClear">
+								<input type="checkbox" class="all" value="" id="color-all" checked />
+							</div>
+
+						</div>
+					</div>
+
+					<div class="col-sm-3">
+						<h5>Gender</h5>
+
+						<div class="slider">
+						  <input type="range" name="priceRange" min="0" max="300" onchange="rangevalue.value=value"/>
+							<h6>
+								$<output id="rangevalue">50</output>
+
+								<?php function roundUpToAny($n,$x=5) {
+    return round(($n+$x/2)/$x)*$x;
+} ?>
+							</h6>
+					  </div>
+					</div>
+
+
 				</div>
+
+
 			</div>
 		</div>
 	</nav>
@@ -223,4 +328,4 @@
 
 
 
-  <div class="main">
+  <div class="main MainWFilter">

@@ -1,77 +1,110 @@
 $(document).ready(function(){
 
-  var $container = $('.grid');
-  var comboFilter = getComboFilter( filters );
-  // $container.isotope({ filter: comboFilter });
+  var $container;
+  var filters = {};
 
+  $(function(){
 
+    $container = $('#grid');
 
-  $('.daFilters button').on( 'click', function() {
+    $container.isotope();
+    // do stuff when checkbox change
+    $('#options').on( 'change', function( jQEvent ) {
+      var $checkbox = $( jQEvent.target );
+      manageCheckbox( $checkbox );
+      var comboFilter = getComboFilter( filters );
+      $container.isotope({ filter: comboFilter });
 
-  var $this = $(this);
-  // get group key
-  var $buttonGroup = $this.parents('.filter-button-group');
-  var Group = $buttonGroup.attr('data-filter-group');
-  console.log(Group);
-  // var filters = [];
+      $value =  $('input[name=priceRange]').val();
+      console.log($value);
+    });
 
-  // combine filters
-  var filterGroup = filters[ Group ];
-
-  if ( !filterGroup ) {
-      filterGroup = filters[ Group ] = [];
-  }
-
-  console.log(filters);
-  var comboFilter = getComboFilter("red" );
-  console.log(comboFilter);
-
-  $container.isotope({
-    filter: comboFilter,
-    itemSelector: '.grid-item',
-    layoutMode: 'fitRows'
   });
 
+  var data = {
+    materials: 'steal wood trivex plastic glass polycarbonate'.split(' '),
+    productTypes: 'type1 type2 type3 type4'.split(' '),
+    gender: 'male female'.split(' '),
+    prices: '0 10 20 30 40 50 60 70 80 90 100 110 120 130 150 160 170 180 190 200 210 220 230 240 250 260 270 280 290 300'.split(' ')
+  };
 
-});
-
-
-function getComboFilter( filters  ) {
+  function getComboFilter( filters ) {
     var i = 0;
     var comboFilters = [];
     var message = [];
-    for ( var prop in filters ) {
-      console.log( filters);
 
-        message.push( filters[ prop ].join(' ') );
-        var filterGroup = filters[ prop ];
-        // skip to next filter group if it doesn't have any values
-        if ( !filterGroup.length ) {
-            continue;
+    for ( var prop in filters ) {
+      message.push( filters[ prop ].join(' ') );
+      var filterGroup = filters[ prop ];
+      // skip to next filter group if it doesn't have any values
+      if ( !filterGroup.length ) {
+        continue;
+      }
+      if ( i === 0 ) {
+        // copy to new array
+        comboFilters = filterGroup.slice(0);
+      } else {
+        var filterSelectors = [];
+        // copy to fresh array
+        var groupCombo = comboFilters.slice(0); // [ A, B ]
+        // merge filter Groups
+        for (var k=0, len3 = filterGroup.length; k < len3; k++) {
+          for (var j=0, len2 = groupCombo.length; j < len2; j++) {
+            filterSelectors.push( groupCombo[j] + filterGroup[k] ); // [ 1, 2 ]
+          }
+
         }
-        if ( i === 0 ) {
-            // copy to new array
-            comboFilters = filterGroup.slice(0);
-        }
-        else {
-            var filterSelectors = [];
-            // copy to fresh array
-            var groupCombo = comboFilters.slice(0); // [ A, B ]
-            // merge filter Groups
-            for (var k=0, len3 = filterGroup.length; k < len3; k++) {
-                for (var j=0, len2 = groupCombo.length; j < len2; j++) {
-                    filterSelectors.push( groupCombo[j] + filterGroup[k] ); // [ 1, 2 ]
-                }
-            }
-            // apply filter selectors to combo filters for next group
-            comboFilters = filterSelectors;
-        }
-        i++;
+        // apply filter selectors to combo filters for next group
+        comboFilters = filterSelectors;
+      }
+      i++;
     }
-    comboFilters.sort();
+
     var comboFilter = comboFilters.join(', ');
     return comboFilter;
-}
+  }
+
+  function manageCheckbox( $checkbox ) {
+    var checkbox = $checkbox[0];
+
+    var group = $checkbox.parents().parents('.option-set').attr('data-group');
+    // create array for filter group, if not there yet
+    var filterGroup = filters[ group ];
+    if ( !filterGroup ) {
+      filterGroup = filters[ group ] = [];
+    }
+
+    var isAll = $checkbox.hasClass('all');
+    // reset filter group if the all box was checked
+    if ( isAll ) {
+      delete filters[ group ];
+      if ( !checkbox.checked ) {
+        checkbox.checked = 'checked';
+      }
+    }
+    // index of
+    var index = $.inArray( checkbox.value, filterGroup );
+
+    if ( checkbox.checked ) {
+      var selector = isAll ? 'input' : 'input.all';
+      $checkbox.parent().siblings().children( selector ).removeAttr('checked');
+
+
+      if ( !isAll && index === -1 ) {
+        // add filter to group
+        filters[ group ].push( checkbox.value );
+      }
+
+    } else if ( !isAll ) {
+      // remove filter from group
+      filters[ group ].splice( index, 1 );
+      // if unchecked the last box, check the all
+      if ( !$checkbox.siblings('[checked]').length ) {
+        $checkbox.siblings('input.all').attr('checked', 'checked');
+      }
+    }
+
+  }
 
 
 
@@ -119,10 +152,46 @@ mywindow.scroll(function () {
     mypos = newscroll;
 });
 
+$('.lensStyle').click(function() {
+   if($('.radio-button').is(':checked')) {
+     $('.btn-toSecond').addClass('enabled');
+    }
+});
+
+$('.lensType').click(function() {
+   if($('.lensType').is(':checked')) {
+     $('.btn-toThird').addClass('enabled');
+    }
+});
+
+  function daChange() {
+    $buttonNest.children('.btn-cover').css('display', 'none');
+  };
+
+  $(".PSelect").on("change", daChange);
+
+$('.no').click(function() {
+  $buttonNest  = $(this).parent().parent().parent().siblings().children();
+   if($('.no').is(':checked')) {
+    $buttonNest.children('.btn-cover').css('display', 'none');
+    $buttonNest.children('.tbl-cover').css('display', 'block');
+    $buttonNest.children('.btn-submit').addClass('enabled');
+    }
+});
+
+$('.yes').click(function() {
+  $buttonNest  = $(this).parent().parent().parent().siblings().children();
+   if($('.yes').is(':checked')) {
+    $buttonNest.children('.btn-cover').css('display', 'block');
+    $buttonNest.children('.tbl-cover').css('display', 'none');
+
+    }
+});
+
 $('.btn-select').click(function(){
   var $this = $(this);
 
-  $this.parent().parent().children().addClass('show');
+  $this.parent().parent().children(".lensSelection").addClass('show');
 });
 
 $('.lensSelection-Background').click(function(){
@@ -131,23 +200,26 @@ $('.lensSelection-Background').click(function(){
 
 
 $('.btn-toSecond').click(function(){
-  $('.LensSecond').addClass('show');
-  $('li.status-ball:nth-of-type(4)').addClass('access');
-  $('li.daBar:nth-of-type(1)').css('background-color', '#30303C');
+  if ($(this).hasClass('enabled')){
+    $('.LensSecond').addClass('show');
+    $('li.status-ball:nth-of-type(4)').addClass('access');
+    $('li.daBar:nth-of-type(1)').css('background-color', '#30303C');
+  }
+
 });
   if ($('li.status-ball:nth-of-type(4)').hasClass('access')) {
 
   }
 
 $('.btn-toThird').click(function(){
-  $('.LensThird').addClass('show');
-  $('li.status-ball:nth-of-type(5)').addClass('access');
-  $('li.daBar:nth-of-type(2)').css('background-color', '#30303C');
+  if ($(this).hasClass('enabled')){
+    $('.LensThird').addClass('show');
+    $('li.status-ball:nth-of-type(5)').addClass('access');
+    $('li.daBar:nth-of-type(2)').css('background-color', '#30303C');
+  }
 });
 
-$('.btn-submitLens').click(function(){
-  $(".lensSelection.show").removeClass('show');
-});
+
 
 $('li.status-ball:nth-of-type(3)').click(function(){
   $('.LensSecond').removeClass('show');
@@ -155,13 +227,24 @@ $('li.status-ball:nth-of-type(3)').click(function(){
 });
 
 $('li.status-ball:nth-of-type(4)').click(function(){
-  if ($(this).hasclass('access')){
+  if ($(this).hasClass('access')){
     $('.LensSecond').addClass('show');
     $('.LensThird').removeClass('show');
   }
 });
 
+$filters = $('.filters');
+$daFilters = $('.daFilters');
 
+$filters.click(function(){
+  $daFilters.toggleClass('show');
+  if($daFilters.hasClass('show')){
+    $('.main').addClass('MainWFilter');
+  }
+  else {
+      $('.main').removeClass('MainWFilter');
+  }
+});
 
 
 
