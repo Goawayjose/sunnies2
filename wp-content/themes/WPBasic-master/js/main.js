@@ -16,7 +16,6 @@ $(document).ready(function(){
       $container.isotope({ filter: comboFilter });
 
       $value =  $('input[name=priceRange]').val();
-      console.log($value);
     });
 
   });
@@ -68,16 +67,19 @@ $(document).ready(function(){
     var checkbox = $checkbox[0];
 
     var group = $checkbox.parents().parents('.option-set').attr('data-group');
+    var allGroup = $checkbox.parents().siblings().children('.option-set').attr('data-group');
+
     // create array for filter group, if not there yet
-    var filterGroup = filters[ group ];
+    var filterGroup = filters[ allGroup ];
     if ( !filterGroup ) {
-      filterGroup = filters[ group ] = [];
+      filterGroup = filters[ allGroup ] = [];
     }
 
     var isAll = $checkbox.hasClass('all');
     // reset filter group if the all box was checked
     if ( isAll ) {
-      delete filters[ group ];
+      delete filters[ allGroup ];
+      $checkbox.parent().siblings().children().children().children().removeAttr('checked');
       if ( !checkbox.checked ) {
         checkbox.checked = 'checked';
       }
@@ -87,17 +89,17 @@ $(document).ready(function(){
 
     if ( checkbox.checked ) {
       var selector = isAll ? 'input' : 'input.all';
-      $checkbox.parent().siblings().children( selector ).removeAttr('checked');
+      $checkbox.parent().siblings().children().children( selector ).removeAttr('checked');
 
 
       if ( !isAll && index === -1 ) {
         // add filter to group
-        filters[ group ].push( checkbox.value );
+        filters[ allGroup ].push( checkbox.value );
       }
 
     } else if ( !isAll ) {
       // remove filter from group
-      filters[ group ].splice( index, 1 );
+      filters[ allGroup ].splice( index, 1 );
       // if unchecked the last box, check the all
       if ( !$checkbox.siblings('[checked]').length ) {
         $checkbox.siblings('input.all').attr('checked', 'checked');
@@ -233,24 +235,33 @@ $('li.status-ball:nth-of-type(4)').click(function(){
   }
 });
 
-$filters = $('.filters');
-$daFilters = $('.daFilters');
 
-$filters.click(function(){
-  $daFilters.toggleClass('show');
-  if($daFilters.hasClass('show')){
+
+
+$('a.btn-filter').click(function(){
+  if(!$('.daFilters').hasClass('in')){
     $('.main').addClass('MainWFilter');
   }
   else {
-      $('.main').removeClass('MainWFilter');
+    $('.main').removeClass('MainWFilter');
   }
 });
 
+$('span.CartPerscription').click(function(){
+  if (!$(this).parents().siblings('.tablePre').hasClass('show')) {
+      $(this).parents().siblings('.tablePre').addClass('show');
+  }
+
+});
 
 
-
-
-
+/*mobile*/
+$('.filterOptions').click(function(){
+  $(this).children('.filterOptionsList').addClass('show');
+  if($(this).siblings().children().hasClass('show')){
+    $(this).siblings().children().removeClass('show');
+  }
+});
 
 
 });

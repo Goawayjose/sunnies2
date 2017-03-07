@@ -19,13 +19,22 @@ if(!empty($_POST['lensStyle'])
   update_field('field_58b5cbe9cd7df', wp_strip_all_tags($_POST['daImg']), $post_id);
   update_field('field_58b5cbf4cd7e0', wp_strip_all_tags($_POST['daImg2']), $post_id);
 
+  update_field('field_58be495c2d032', wp_strip_all_tags($_POST['RightSPH']), $post_id);
+  update_field('field_58be49832d033', wp_strip_all_tags($_POST['RightCYL']), $post_id);
+  update_field('field_58be499c2d034', wp_strip_all_tags($_POST['RightAxis']), $post_id);
+  update_field('field_58be49b92d035', wp_strip_all_tags($_POST['RightADD']), $post_id);
+  update_field('field_58be49c82d036', wp_strip_all_tags($_POST['LeftSPH']), $post_id);
+  update_field('field_58be49d82d037', wp_strip_all_tags($_POST['LeftCYL']), $post_id);
+  update_field('field_58be4a0a2d038', wp_strip_all_tags($_POST['LeftAXS']), $post_id);
+  update_field('field_58be4bcf2d039', wp_strip_all_tags($_POST['LeftADD']), $post_id);
+  update_field('field_58be4bdd2d03a', wp_strip_all_tags($_POST['PD']), $post_id);
+  update_field('field_58be4bef2d03b', wp_strip_all_tags($_POST['2pd']), $post_id);
+  update_field('field_58be4c662d03c', wp_strip_all_tags($_POST['NearPd']), $post_id);
 
+$page = get_bloginfo('url')."/classic";
 
-/*  $url = bloginfo('url').'/classic';
-
-  header('Location: ' . $url);
-  die(); */
-
+  header('Location:'.$page);
+  exit;
 
 }
 ?>
@@ -91,7 +100,7 @@ $classics = New WP_query ([
 
 
 
-    <div class="item col-sm-3 <?php foreach((get_the_category()) as $category) { echo $category->cat_name . ' '; } ?>   ">
+    <div class="item col-md-3 col-sm-4 col-xs-6 <?php foreach((get_the_category()) as $category) { echo $category->cat_name . ' '; } ?>   ">
         <div class="storeTemplate well">
 
 
@@ -140,11 +149,13 @@ $classics = New WP_query ([
             </ul>
             <form class="" action="" method="post">
               <div id="LensFirst">
-                <input id="clear" class="radio-button" type="radio" checked="checked" name="daImg2" value="<?php the_field('imgSecond'); ?>" />
-                <input id="clear" class="radio-button" type="radio" checked="checked" name="daImg" value="<?php the_field('imgMain'); ?>" />
-                <input id="clear" class="radio-button" type="radio" checked="checked" name="daPrice" value="<?php the_field('firstPrice'); ?>" />
-                <input id="clear" class="radio-button" type="radio" checked="checked" name="daTitle" value="<?php the_title(); ?>" />
-              <div class="row">
+                <div class="loPacity">
+                  <input id="clear" class="radio-button" type="radio" checked="checked" name="daImg2" value="<?php the_field('imgSecond'); ?>" />
+                  <input id="clear" class="radio-button" type="radio" checked="checked" name="daImg" value="<?php the_field('imgMain'); ?>" />
+                  <input id="clear" class="radio-button" type="radio" checked="checked" name="daPrice" value="<?php the_field('firstPrice'); ?>" />
+                  <input id="clear" class="radio-button" type="radio" checked="checked" name="daTitle" value="<?php the_title(); ?>" />
+                </div>
+                <div class="row">
                 <h1>select lens type</h1>
               </div>
               <div class="row">
@@ -166,10 +177,8 @@ $classics = New WP_query ([
                     <input id="transition" class="radio-button lensStyle" type="radio" name="lensStyle" value="transparent" />
                     <div class="radio-tile">
                       <div class="icon walk-icon">
-                        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M0 0h24v24H0z" fill="none"/>
-                          <path d="M13.5 5.5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zM9.8 8.9L7 23h2.1l1.8-8 2.1 2v6h2v-7.5l-2.1-2 .6-3C14.8 12 16.8 13 19 13v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1L6 8.3V13h2V9.6l1.8-.7"/>
-                        </svg>
+                        <img class="lensTypeImg" src="<?php bloginfo('stylesheet_directory');?>/img/transforming.gif" alt="">
+                        <img class="lensTypeImg lensTypeImgOn" src="<?php bloginfo('stylesheet_directory');?>/img/onTransition.gif" alt="">
                       </div>
                       <label for="transition">transition</label>
                     </div>
@@ -180,10 +189,9 @@ $classics = New WP_query ([
                     <input id="polarized" class="radio-button lensStyle" type="radio"  name="lensStyle" value="polarized" />
                     <div class="radio-tile">
                       <div class="icon walk-icon">
-                        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M0 0h24v24H0z" fill="none"/>
-                          <path d="M13.5 5.5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zM9.8 8.9L7 23h2.1l1.8-8 2.1 2v6h2v-7.5l-2.1-2 .6-3C14.8 12 16.8 13 19 13v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1L6 8.3V13h2V9.6l1.8-.7"/>
-                        </svg>
+                        <img class="lensTypeImg" src="<?php bloginfo('stylesheet_directory');?>/img/sunglasses.png" alt="">
+                        <img class="lensTypeImg lensTypeImgOn" src="<?php bloginfo('stylesheet_directory');?>/img/whiteClassic.png" alt="">
+
                       </div>
 
                     <label for="polarized">polarized</label>
@@ -204,7 +212,7 @@ $classics = New WP_query ([
                 <div class="row">
                   <div class="col-sm-3">
                     <div class="totalSoFar">
-                      <p>Total: <?php the_field('firstPrice'); ?></p>
+                      <h4>Total: $<?php the_field('firstPrice'); ?></h4>
                     </div>
                   </div>
                   <div class="col-sm-6"></div>
@@ -274,7 +282,9 @@ $classics = New WP_query ([
                       <div class="radio-tile">
                           <label for="polarized">Anti-Reflection</label>
                         </div>
-                        <input id="" class="" type="radio" name="materialoptional" value="" />
+                        <div class="loPacity">
+                          <input id="" class="" type="radio" name="materialoptional" value="" />
+                        </div>
                     </div>
 
                   </div>
@@ -330,15 +340,15 @@ $classics = New WP_query ([
               </div>
 
               <div id="percriptionInfo" class="row">
-                <div class="responsive">
+                <div class="table-responsive">
         <table class="table table-bordered box-shadow--6dp">
           <div class="tbl-cover cover"></div>
           <thead>
             <tr>
               <th></th>
-              <th>Right (OD)</th>
+              <th>Sphere (SPH)</th>
               <th>Cylinder (CYL)</th>
-              <th>Add (Near addition)</th>
+              <th>Axis(AXI)</th>
               <th>Add (Near addition)</th>
             </tr>
           </thead>
@@ -347,7 +357,7 @@ $classics = New WP_query ([
             <tr>
               <th scope="row">Right (OD)</th>
               <td>
-                <select name="RightRightOd" class="PSelect"  onchange="daChange()">
+                <select name="RightSPH" class="PSelect"  onchange="daChange()">
                     <?php
                       $x = -9.25;
 
@@ -355,23 +365,23 @@ $classics = New WP_query ([
 
                           $x = $x + 0.25;
 
-                          echo  "<option value='$x'>$x</option>";
+                          echo  "<option name='RightSPH' value='$x'>$x</option>";
 
                       } while ($x < (-0.00));
                       ?>
-                  <option selected="selected" value="none">none</option>
-                  <option value="00Plano">00 Plano</option>
-                  <option value="SPH">SPH</option>
-                  <option value="DS">DS</option>
-                  <option value="Balance">Balance</option>
-                  <option value="INFINITY">INFINITY</option>
+                  <option selected="selected"name='RightSPH'  value="none">none</option>
+                  <option name='RightSPH' value="00Plano">00 Plano</option>
+                  <option name='RightSPH' value="SPH">SPH</option>
+                  <option name='RightSPH' value="DS">DS</option>
+                  <option name='RightSPH' value="Balance">Balance</option>
+                  <option name='RightSPH' value="INFINITY">INFINITY</option>
                   <?php
                     $x = 0.00;
 
                     do {
 
                         $x = $x + .25;
-                        echo  "<option value='$x'>+$x</option>";
+                        echo  "<option name='RightSPH' value='$x'>+$x</option>";
 
                     } while ($x < 9);
                     ?>
@@ -381,7 +391,7 @@ $classics = New WP_query ([
 
 
               <td>
-                <select name="RightRightOd" class="PSelect">
+                <select name="RightCYL" class="PSelect">
                     <?php
                       $x = -9.25;
 
@@ -389,53 +399,53 @@ $classics = New WP_query ([
 
                           $x = $x + 0.25;
 
-                          echo  "<option value='$x'>$x</option>";
+                          echo  "<option name='RightCYL' value='$x'>$x</option>";
 
                       } while ($x < (-0.00));
                       ?>
-                  <option selected="selected" value="none">none</option>
-                  <option value="00Plano">00 Plano</option>
-                  <option value="SPH">SPH</option>
-                  <option value="DS">DS</option>
-                  <option value="Balance">Balance</option>
-                  <option value="INFINITY">INFINITY</option>
+                  <option name="RightCYL" selected="selected" value="none">none</option>
+                  <option name="RightCYL" value="00Plano">00 Plano</option>
+                  <option name="RightCYL" value="SPH">SPH</option>
+                  <option name="RightCYL" value="DS">DS</option>
+                  <option name="RightCYL" value="Balance">Balance</option>
+                  <option name="RightCYL" value="INFINITY">INFINITY</option>
                   <?php
                     $x = 0.00;
 
                     do {
 
                         $x = $x + .25;
-                        echo  "<option value='$x'>+$x</option>";
+                        echo  "<option name='RightCYL' value='$x'>+$x</option>";
 
                     } while ($x < 9);
                     ?>
                 </select>
               </td>
               <td>
-                <select name="RightRightOd" class="PSelect">
-                  <option selected="selected" value="none">none</option>
+                <select name="RightAxis" class="PSelect">
+                  <option name="RightAxis" selected="selected" value="none">none</option>
                   <?php
                     $x = 00;
 
                     do {
 
                         $x = $x + 1;
-                        echo  "<option value='$x'>$x</option>";
+                        echo  "<option name='RightAxis' value='$x'>$x</option>";
 
                     } while ($x < 180);
                   ?>
                 </select>
               </td>
               <td>
-                <select name="RightRightOd" class="PSelect">
-                  <option selected="selected" value="none">none</option>
+                <select name="RightADD" class="PSelect">
+                  <option name="RightADD" selected="selected" value="none">none</option>
                   <?php
                     $x = 0.5;
 
                     do {
 
                         $x = $x + .25;
-                        echo  "<option value='$x'>+$x</option>";
+                        echo  "<option name='RightADD' value='$x'>+$x</option>";
 
                     } while ($x < 3.5);
                   ?>
@@ -445,7 +455,7 @@ $classics = New WP_query ([
             <tr>
               <th scope="row">Left (OD)</th>
               <td>
-                <select name="RightRightOd" class="PSelect">
+                <select name="LeftSPH" class="PSelect">
                     <?php
                       $x = -9.25;
 
@@ -453,23 +463,23 @@ $classics = New WP_query ([
 
                           $x = $x + 0.25;
 
-                          echo  "<option value='$x'>$x</option>";
+                          echo  "<option name='LeftSPH' value='$x'>$x</option>";
 
                       } while ($x < (-0.00));
                       ?>
-                  <option selected="selected" value="none">none</option>
-                  <option value="00Plano">00 Plano</option>
-                  <option value="SPH">SPH</option>
-                  <option value="DS">DS</option>
-                  <option value="Balance">Balance</option>
-                  <option value="INFINITY">INFINITY</option>
+                  <option name="LeftSPH" selected="selected" value="none">none</option>
+                  <option name="LeftSPH" value="00Plano">00 Plano</option>
+                  <option name="LeftSPH" value="SPH">SPH</option>
+                  <option name="LeftSPH" value="DS">DS</option>
+                  <option name="LeftSPH" value="Balance">Balance</option>
+                  <option name="LeftSPH" value="INFINITY">INFINITY</option>
                   <?php
                     $x = 0.00;
 
                     do {
 
                         $x = $x + .25;
-                        echo  "<option value='$x'>+$x</option>";
+                        echo  "<option name='LeftSPH' value='$x'>+$x</option>";
 
                     } while ($x < 9);
                     ?>
@@ -479,7 +489,7 @@ $classics = New WP_query ([
 
 
               <td>
-                <select name="RightRightOd" class="PSelect">
+                <select name="LeftCYL" class="PSelect">
                     <?php
                       $x = -9.25;
 
@@ -487,53 +497,53 @@ $classics = New WP_query ([
 
                           $x = $x + 0.25;
 
-                          echo  "<option value='$x'>$x</option>";
+                          echo  "<option name='LeftCYL' value='$x'>$x</option>";
 
                       } while ($x < (-0.00));
                       ?>
-                  <option selected="selected" value="none">none</option>
-                  <option value="00Plano">00 Plano</option>
-                  <option value="SPH">SPH</option>
-                  <option value="DS">DS</option>
-                  <option value="Balance">Balance</option>
-                  <option value="INFINITY">INFINITY</option>
+                  <option name="LeftCYL" selected="selected" value="none">none</option>
+                  <option name="LeftCYL" value="00Plano">00 Plano</option>
+                  <option name="LeftCYL" value="SPH">SPH</option>
+                  <option name="LeftCYL" value="DS">DS</option>
+                  <option name="LeftCYL" value="Balance">Balance</option>
+                  <option name="LeftCYL" value="INFINITY">INFINITY</option>
                   <?php
                     $x = 0.00;
 
                     do {
 
                         $x = $x + .25;
-                        echo  "<option value='$x'>+$x</option>";
+                        echo  "<option name='LeftCYL' value='$x'>+$x</option>";
 
                     } while ($x < 9);
                     ?>
                 </select>
               </td>
               <td>
-                <select name="RightRightOd" class="PSelect">
-                  <option selected="selected" value="none">none</option>
+                <select name="LeftAXS" class="PSelect">
+                  <option name="LeftAXS" selected="selected" value="none">none</option>
                   <?php
                     $x = 00;
 
                     do {
 
                         $x = $x + 1;
-                        echo  "<option value='$x'>$x</option>";
+                        echo  "<option name='LeftAXS' value='$x'>$x</option>";
 
                     } while ($x < 180);
                   ?>
                 </select>
               </td>
               <td>
-                <select name="RightRightOd" class="PSelect">
-                  <option selected="selected" value="none">none</option>
+                <select name='LeftADD' class="PSelect">
+                  <option selected="selected" name='LeftADD' value="none">none</option>
                   <?php
                     $x = 0.5;
 
                     do {
 
                         $x = $x + .25;
-                        echo  "<option value='$x'>+$x</option>";
+                        echo  "<option name='LeftADD' value='$x'>+$x</option>";
 
                     } while ($x < 3.5);
                   ?>
@@ -543,15 +553,15 @@ $classics = New WP_query ([
             <tr>
               <th scope="row">PD</th>
               <td>
-                <select name="RightRightOd" class="PSelect">
-                  <option value="none">none</option>
+                <select name='PD' class="PSelect">
+                  <option name='PD' value="none">none</option>
                   <?php
                     $x = 49;
 
                     do {
 
                         $x = $x + 1;
-                        echo  "<option value='$x'>$x</option>";
+                        echo  "<option name='PD' value='$x'>$x</option>";
 
                     } while ($x < 62);
                   ?>
@@ -562,33 +572,58 @@ $classics = New WP_query ([
                     do {
 
                         $x = $x + 1;
-                        echo  "<option value='$x'>$x</option>";
+                        echo  "<option name='PD' value='$x'>$x</option>";
 
                     } while ($x < 80);
                   ?>
                 </select>
               </td>
-              <td><input type="radio" name="2pd" value="2pd"> I have 2 PD numbers</td>
+              <td><input type="radio" name="2pdOpen" value="2pd"> I have 2 PD numbers</td>
+              <td>
+                <select name='2pd' class="PSelect">
+                  <option name='2pd' value="none">none</option>
+                  <?php
+                    $x = 49;
 
+                    do {
+
+                        $x = $x + 1;
+                        echo  "<option name='2pd' value='$x'>$x</option>";
+
+                    } while ($x < 62);
+                  ?>
+                  <option name='2pd' selected="selected" value="63">63</option>
+                  <?php
+                    $x = 63;
+
+                    do {
+
+                        $x = $x + 1;
+                        echo  "<option name='2pd' value='$x'>$x</option>";
+
+                    } while ($x < 80);
+                  ?>
+                </select>
+              </td>
             </tr>
             <tr>
               <th scope="row">Near PD</th>
               <td>
-                <select class="NeaPd PSelect" name="NearPd" >
-                  <option selected="selected" value="none">none</option>
+                <select class="NearPd PSelect" name="NearPd" >
+                  <option selected="selected" name="NearPd" value="none">none</option>
                   <?php
                     $x = 39;
 
                     do {
 
                         $x = $x + 1;
-                        echo  "<option value='$x'>$x</option>";
+                        echo  "<option name='NearPd' value='$x'>$x</option>";
 
                     } while ($x < 70);
                   ?>
                 </select>
               </td>
-              <td><input type="radio" name="2pd" value="2pd"> Add Pirsm</td>
+
 
             </tr>
           </tbody>

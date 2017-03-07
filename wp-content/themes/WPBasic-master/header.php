@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+<meta name="viewport" content="width=device-width" />
 	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 	<script src="<?php bloginfo('stylesheet_directory');?>/js/main.js"></script>
 	<title><?php if(is_home()) bloginfo('name'); else wp_title(''); ?></title>
@@ -28,7 +28,7 @@
 			</div>
 		</div>
 		<div class="mainNav">
-			<div class="container">
+			<div class="container navCon">
 
 				<a href="<?php bloginfo('url');?>/classic">
 					<div class="productSvg" id="classic">
@@ -175,22 +175,21 @@
 						</div>
 					</div>
 				</a>
-				<a class="filters" href="#">
-					<div >
-						filters
-					</div>
+				<a class="btn-filter" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+					<img src="<?php bloginfo('stylesheet_directory');?>/img/filter.png" class="filterimg" alt="">
+					<div class="filterOff"></div>
 				</a>
 			</div>
 		</div>
 
 
 
-		<div id="filters" class=" daFilters show">
+		<div id="collapseExample" class=" daFilters collapse in">
 			<div class="container">
 				<div id="options">
-					<div class="col-sm-4">
+					<div class="filterOptions col-sm-4">
 						<h5>Colors</h5>
-						<div class="option-set color-set" data-group="color">
+						<div class="filterOptionsList option-set color-set" data-group="color">
 							<div class="inputHolder">
 								<input style="background:#FFFFFF;" type="checkbox" class="color" value=".white" id="white" /><label  for="white">white</label>
 							</div>
@@ -240,84 +239,55 @@
 
 							</div>
 
-							<br><br><br>
-							<div class="inputHolderClear">
-								<input type="checkbox" class="all" value="" id="color-all" checked />
-							</div>
 
 						</div>
 					</div>
 
-					<div class="col-sm-3">
+					<div class="filterOptions col-md-4 col-sm-6">
 						<h5>Materials</h5>
-						<div class="option-set" data-group="color">
-							<div class="inputHolder2 col-sm-6">
+						<div class="filterOptionsList option-set" data-group="color">
+							<div class="inputHolder2 col-xs-5">
 								<input  type="checkbox" class="material" value=".steal" id="steal" /><label  for="steal">steal</label>
 							</div>
-							<div class="inputHolder2 col-sm-6">
+							<div class="inputHolder2 col-xs-7">
 								<input  type="checkbox" class="material" value=".plastic" id="plastic" /><label  for="plastic">plastic</label>
 
 							</div><br>
-							<div class="inputHolder2 col-sm-6">
+							<div class="inputHolder2 col-xs-5">
 								<input  type="checkbox" class="material" value=".wood" id="wood" /><label  for="wood">wood</label>
 
 							</div>
-							<div class="inputHolder2 col-sm-6">
+							<div class="inputHolder2 col-xs-7">
 								<input  type="checkbox" class="material" value=".glass" id="glass" /><label  for="glass">glass</label>
 
 							</div><br>
-							<div class="inputHolder2 col-sm-6">
+							<div class="inputHolder2 col-xs-5">
 								<input  type="checkbox" class="material" value=".trivex" id="trivex" /><label  for="trivex">trivex</label>
 
 							</div>
-							<div class="inputHolder2 col-sm-6">
+							<div class="inputHolder2 col-xs-7">
 								<input  type="checkbox" class="material" value=".polycarbonate" id="polycarbonate" /><label  for="polycarbonate">polycarbonate</label><br>
 
 							</div>
 
-							<br><br>
-							<div class="inputHolderClear">
-								<input type="checkbox" class="all" value="" id="color-all" checked />
-							</div>
-
 						</div>
 					</div>
 
-					<div class="col-sm-2">
-						<h5>Gender</h5>
-						<div class="option-set" data-group="color">
-							<div class="inputHolder">
+					<div class="filterOptions col-sm-3">
+						<h5 class="mobile-tab">Gender</h5>
+						<div class="filterOptionsList option-set" data-group="color">
+							<div class="inputHolder inGender">
 								<input  type="checkbox" class="gender" value=".male" id="male" />
 							</div>
-							<div class="inputHolder">
+							<div class="inputHolder inGender">
 								<input  type="checkbox" class="gender female" value=".female" id="female" />
-
 							</div>
-
-							<br><br>
-							<div class="inputHolderClear">
-								<input type="checkbox" class="all" value="" id="color-all" checked />
-							</div>
-
 						</div>
 					</div>
 
-					<div class="col-sm-3">
-						<h5>Gender</h5>
-
-						<div class="slider">
-						  <input type="range" name="priceRange" min="0" max="300" onchange="rangevalue.value=value"/>
-							<h6>
-								$<output id="rangevalue">50</output>
-
-								<?php function roundUpToAny($n,$x=5) {
-    return round(($n+$x/2)/$x)*$x;
-} ?>
-							</h6>
-					  </div>
+					<div class="inputHolderClear">
+						<input type="checkbox" class="all" value="" id="color-all" checked />
 					</div>
-
-
 				</div>
 
 
