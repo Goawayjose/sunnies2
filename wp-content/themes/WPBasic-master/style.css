@@ -101,6 +101,7 @@ nav .mainNav > .container > a {
 
 .bigHeader {
   top:75vh;
+  min-height: 100vh;
   padding-bottom: 50px;
   padding-top: 50px;
   position: relative;
@@ -199,7 +200,13 @@ height: 48px;
 
 /*filter icons*/
 
+.single.btn-filter {
+  margin-top: 40px;
+  left: 0px;
+}
+
 .btn-filter {
+  z-index: 2;
   position: relative;
   top: 0px;
   width: 32px;
@@ -269,7 +276,8 @@ img.LandingImg {
 }
 
 .btn-select {
-  cursor: pointer;
+    text-align: center;
+    cursor: pointer;
     padding-top: 6px;
     padding-bottom: 6px;
     height: auto;
@@ -946,9 +954,42 @@ span.emphasis {
   background: #FFAE5F;
 }
 
-.filterIcon {
+.filterimg {
+  left: 7px;
+    top: 8px;
+  transform: rotate(90deg);
   width: 18px;
   height: 18px;
+  position: relative;
+  display: none;
+}
+
+.filterOff {
+  left: -2px;
+  top: 15px;
+  width: 18px;
+  height: 18px;
+  position: relative;
+  display: none;
+}
+
+.filterOff:after {
+  width: 100%;
+  height: 2px;
+  position: absolute;
+  top: 0;
+  content: '';
+  transform: rotate(45deg);
+  background: white;
+}
+.filterOff:before {
+  background: white;
+  width: 100%;
+  height: 2px;
+  position: absolute;
+  top: 0;
+  content: '';
+  transform: rotate(-45deg);
 }
 
 @media all and (max-width:990px) {
@@ -961,6 +1002,10 @@ span.emphasis {
   .inputHolder {
     height: 56px;
     width: 56px;
+  }
+
+  .btn-Cart {
+    right:10px;
   }
 
   .filterOptions h5 {
@@ -981,11 +1026,10 @@ span.emphasis {
 
   .btn-filter {
     position: fixed;
-    top: 7px;
-    left: 5px;
+    top: 100px;
+    right: 15px;
     width: 32px;
     height: 32px;
-    background-color: white;
     border-radius: 48px;
   }
 

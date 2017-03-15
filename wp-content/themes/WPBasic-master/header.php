@@ -177,7 +177,7 @@
 				</a>
 				<a class="btn-filter" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
 					<img src="<?php bloginfo('stylesheet_directory');?>/img/filter.png" class="filterimg" alt="">
-					<div class="filterOff"></div>
+					<div class="filterOff show"></div>
 				</a>
 			</div>
 		</div>

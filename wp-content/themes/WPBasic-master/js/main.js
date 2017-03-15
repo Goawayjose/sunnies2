@@ -168,6 +168,7 @@ $('.lensType').click(function() {
 
   function daChange() {
     $buttonNest.children('.btn-cover').css('display', 'none');
+    $buttonNest.children('.btn-cover').addClass('.');
   };
 
   $(".PSelect").on("change", daChange);
@@ -186,6 +187,7 @@ $('.yes').click(function() {
    if($('.yes').is(':checked')) {
     $buttonNest.children('.btn-cover').css('display', 'block');
     $buttonNest.children('.tbl-cover').css('display', 'none');
+    $buttonNest.children('.btn-submit').addClass('enabled');
 
     }
 });
@@ -240,18 +242,19 @@ $('li.status-ball:nth-of-type(4)').click(function(){
 
 $('a.btn-filter').click(function(){
   if(!$('.daFilters').hasClass('in')){
+    $('.filterimg').removeClass('show');
     $('.main').addClass('MainWFilter');
+    $('.filterOff').addClass('show');
   }
   else {
     $('.main').removeClass('MainWFilter');
+    $('.filterimg').addClass('show');
+    $('.filterOff').removeClass('show');
   }
 });
 
 $('span.CartPerscription').click(function(){
-  if (!$(this).parents().siblings('.tablePre').hasClass('show')) {
-      $(this).parents().siblings('.tablePre').addClass('show');
-  }
-
+      $(this).parents().parents().siblings().children('.tablePre').addClass('show');
 });
 
 

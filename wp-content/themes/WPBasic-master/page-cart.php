@@ -15,8 +15,9 @@ $carts = New WP_query ([
 
 
 <div class="container">
-  <div class="row">
+
     <?php if ($carts->have_posts()) : while ($carts->have_posts()) : $carts->the_post(); ?>
+      <div class="row">
       <div class="col-sm-3">
         <img src="<?php the_field('field_58b5cbf4cd7e0'); ?>" class="img-responsive secondImg" alt="">
         <img class="img-responsive" src="<?php the_field('field_58b5cbe9cd7df'); ?>" alt="">
@@ -30,6 +31,8 @@ $carts = New WP_query ([
       <div class="col-sm-2">
         <h4><br>Total:<br>$<?php the_field('firstPrice'); ?></h4>
       </div>
+    </div>
+    <div class="row">
       <div class="tablePre col-md-12">
         <div class="table-responsive">
           <table class="table">
@@ -64,16 +67,27 @@ $carts = New WP_query ([
           </table>
         </div>
       </div>
+    </div>
+
 
     <?php endwhile; else: ?>
         <p>Your cart is empty</p>
     <?php endif; ?>
-  </div>
+
   <div class="btn-Checkout btn-Continue">
     Check Out
   </div>
 </div>
 
+<script type="text/javascript">
+$(document).ready(function(){
+  $('.daFilters').removeClass('in')
+  $('.main').removeClass('MainWFilter');
+  $('.filterimg').addClass('show');
+  $('.filterOff').removeClass('show');
+});
+
+</script>
 
 
 
